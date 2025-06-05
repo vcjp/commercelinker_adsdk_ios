@@ -1,0 +1,6 @@
+framework module CommerceLinkerAdSDK {
+  umbrella header "CommerceLinkerAdSDK.h"
+  export *
+
+  module * { export * }
+}

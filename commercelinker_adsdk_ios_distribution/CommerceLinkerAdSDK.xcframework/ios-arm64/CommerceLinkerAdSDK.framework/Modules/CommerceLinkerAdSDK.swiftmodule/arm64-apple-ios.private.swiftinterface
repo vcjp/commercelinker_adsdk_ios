@@ -1,0 +1,365 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+// swift-module-flags: -target arm64-apple-ios14 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name CommerceLinkerAdSDK
+import AdSupport
+import AppTrackingTransparency
+@_exported import CommerceLinkerAdSDK
+import CommonCrypto
+import CryptoKit
+import Foundation
+import Swift
+import SwiftUI
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os.log
+import os
+public enum CLADEnvironment {
+  case development
+  case test
+  case staging
+  case production
+  public static func == (a: CommerceLinkerAdSDK.CLADEnvironment, b: CommerceLinkerAdSDK.CLADEnvironment) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct CLADConstant {
+  public static func setEnvironment(env: CommerceLinkerAdSDK.CLADEnvironment)
+}
+public struct CLADBrandAd : Swift.Decodable {
+  public var CreativeTemplateId: Swift.String {
+    get
+  }
+  public var ElementGroups: [Swift.String : CommerceLinkerAdSDK.CLADBrandAdElementGroupDecodable] {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct CLADBrandAdElementGroupDecodable : Swift.Decodable {
+  public init(from decoder: any Swift.Decoder)
+}
+public struct CLADBrandAdImage : Swift.Codable {
+  public var ImageUrl: Swift.String {
+    get
+  }
+  public var ClickUrl: Swift.String {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct CLADBrandAdImageWithKey {
+  public var key: Swift.String {
+    get
+  }
+  public var imageElement: CommerceLinkerAdSDK.CLADBrandAdImage {
+    get
+  }
+}
+public struct CLADBrandAdProduct : Swift.Codable {
+  public var ProductName: Swift.String {
+    get
+  }
+  public var ImageUrl: Swift.String {
+    get
+  }
+  public var ClickUrl: Swift.String {
+    get
+  }
+  public var Price: Swift.Int? {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct CLADBrandAdProductWithKey {
+  public var key: Swift.String {
+    get
+  }
+  public var productElement: CommerceLinkerAdSDK.CLADBrandAdProduct {
+    get
+  }
+}
+public struct CLADBrandAdRequest {
+  public var searchKeyword: Swift.String {
+    get
+  }
+  public var searchCategoryIds: Swift.String {
+    get
+  }
+  public var searchExcludedCategoryIds: Swift.String {
+    get
+  }
+  public var adgroupIds: Swift.String {
+    get
+  }
+  public init(searchKeyword: Swift.String = "", searchCategoryIds: [Swift.String] = [], searchExcludedCategoryIds: [Swift.String] = [], adgroupIds: [Swift.Int] = [])
+}
+public struct CLADBrandAdResponse : Swift.Decodable {
+  public var ReturnNum: Swift.Int {
+    get
+  }
+  public var AdspaceTemplateId: Swift.String {
+    get
+  }
+  public var BrandAds: [CommerceLinkerAdSDK.CLADBrandAd] {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct CLADBrandAdText : Swift.Codable {
+  public var Text: Swift.String {
+    get
+  }
+  public var ClickUrl: Swift.String? {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct CLADBrandAdTextWithKey {
+  public var key: Swift.String {
+    get
+  }
+  public var textElement: CommerceLinkerAdSDK.CLADBrandAdText {
+    get
+  }
+}
+public struct CLADAdspace {
+  public var adspaceId: Swift.String {
+    get
+  }
+  public var width: CoreFoundation.CGFloat {
+    get
+  }
+  public var widthSizeRatio: Swift.Float {
+    get
+  }
+  public var tabViewHeight: CoreFoundation.CGFloat {
+    get
+  }
+  public var adChangeInterval: Swift.Int {
+    get
+  }
+  public var adLoadInterval: Swift.Int {
+    get
+  }
+  public init(adspaceId: Swift.String, width: CoreFoundation.CGFloat, widthSizeRatio: Swift.Float = 0.7, tabViewHeight: CoreFoundation.CGFloat = 0, adChangeInterval: Swift.Int = 5, adLoadInterval: Swift.Int = 0)
+}
+@_hasMissingDesignatedInitializers public class CLADConfig {
+  public static var shared: CommerceLinkerAdSDK.CLADConfig
+  public var siteCode: Swift.String {
+    get
+  }
+  public var lang: Swift.String {
+    get
+  }
+  public var debug: Swift.Bool {
+    get
+  }
+  public var rewardId: Swift.String {
+    get
+  }
+  public var userId: Swift.String {
+    get
+  }
+  public var userCode: Swift.String {
+    get
+  }
+  public var idfa: Swift.String {
+    get
+  }
+  public var idfv: Swift.String {
+    get
+  }
+  public var useAdId: Swift.Bool {
+    get
+  }
+  public func initialize(siteCode: Swift.String, lang: Swift.String = "ja", debug: Swift.Bool = false, rewardId: Swift.String = "-", userId: Swift.String = "-", useAdId: Swift.Bool = true)
+  public func setLanguage(language: Swift.String)
+  public func setRewardId(rewardId: Swift.String)
+  public func setUserId(userId: Swift.String)
+  @objc deinit
+}
+public struct CLADPurchaseProductInfo {
+  public var productCode: Swift.String {
+    get
+  }
+  public var count: Swift.Int {
+    get
+  }
+  public var amount: Swift.Int {
+    get
+  }
+  public init(productCode: Swift.String, count: Swift.Int, amount: Swift.Int)
+}
+public struct CLADProductAd : Swift.Codable {
+  public var ProductCode: Swift.String {
+    get
+  }
+  public var ClickUrl: Swift.String {
+    get
+  }
+  public var ImpressionUrl: Swift.String? {
+    get
+  }
+  public var ProductInfo: CommerceLinkerAdSDK.CLADProductAdProductInfo {
+    get
+  }
+  public var MatchAd: Swift.String? {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct CLADProductAdProductInfo : Swift.Codable {
+  public var ProductName: Swift.String {
+    get
+  }
+  public var ProductPrice: Swift.Int {
+    get
+  }
+  public var ProductImageUrl: Swift.String {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct CLADProductAdRequest {
+  public var searchKeyword: Swift.String {
+    get
+  }
+  public var searchCategoryIds: Swift.String {
+    get
+  }
+  public var searchExcludedCategoryIds: Swift.String {
+    get
+  }
+  public var searchProductCodes: Swift.String {
+    get
+  }
+  public init(searchKeyword: Swift.String = "", searchCategoryIds: [Swift.String] = [], searchExcludedCategoryIds: [Swift.String] = [], searchProductCodes: [Swift.String] = [])
+}
+public struct CLADProductAdResponse : Swift.Codable {
+  public var ReturnNum: Swift.Int {
+    get
+  }
+  public var AdspaceTemplateId: Swift.String {
+    get
+  }
+  public var ImpressionUrl: Swift.String? {
+    get
+  }
+  public var ProductAds: [CommerceLinkerAdSDK.CLADProductAd] {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct CLADRewardAd : Swift.Codable {
+  public var CreativeTemplateId: Swift.String {
+    get
+  }
+  public var Text: Swift.String {
+    get
+  }
+  public var ImageUrl: Swift.String {
+    get
+  }
+  public var ClickUrl: Swift.String {
+    get
+  }
+  public var RewardType: Swift.Int {
+    get
+  }
+  public var Reward: Swift.String {
+    get
+  }
+  public var RewardTypeName: Swift.String {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct CLADRewardAdRequest {
+  public var searchKeyword: Swift.String {
+    get
+  }
+  public var searchCategoryIds: Swift.String {
+    get
+  }
+  public init(searchKeyword: Swift.String = "", searchCategoryIds: [Swift.String] = [])
+}
+public struct CLADRewardAdResponse : Swift.Codable {
+  public var ReturnNum: Swift.Int {
+    get
+  }
+  public var AdspaceTemplateId: Swift.String {
+    get
+  }
+  public var RewardAds: [CommerceLinkerAdSDK.CLADRewardAd] {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_Concurrency.MainActor @preconcurrency public struct CLADBrandInlineAdView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(adspace: CommerceLinkerAdSDK.CLADAdspace, request: CommerceLinkerAdSDK.CLADBrandAdRequest = CLADBrandAdRequest())
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s19CommerceLinkerAdSDK015CLADBrandInlineC4ViewV4bodyQrvp", 0) __
+}
+@_Concurrency.MainActor @preconcurrency public struct CLADBrandOverlayAdView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(adspace: CommerceLinkerAdSDK.CLADAdspace, request: CommerceLinkerAdSDK.CLADBrandAdRequest = CLADBrandAdRequest())
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s19CommerceLinkerAdSDK016CLADBrandOverlayC4ViewV4bodyQrvp", 0) __
+}
+public func CLADBrandAdExtractProductElements(from brandAd: CommerceLinkerAdSDK.CLADBrandAd) -> [CommerceLinkerAdSDK.CLADBrandAdProductWithKey]
+public func CLADBrandAdExtractImageElements(from brandAd: CommerceLinkerAdSDK.CLADBrandAd) -> [CommerceLinkerAdSDK.CLADBrandAdImageWithKey]
+public func CLADBrandAdExtractTextElements(from brandAd: CommerceLinkerAdSDK.CLADBrandAd) -> [CommerceLinkerAdSDK.CLADBrandAdTextWithKey]
+public func CLADFetchBrandAdData(adspaceId: Swift.String, request: CommerceLinkerAdSDK.CLADBrandAdRequest = CLADBrandAdRequest()) async -> CommerceLinkerAdSDK.CLADBrandAdResponse
+public func CLADConversionCall(productInfos: [CommerceLinkerAdSDK.CLADPurchaseProductInfo], orderId: Swift.String = "")
+public func CLADExtractRedirectUrlParameter(clickUrl: Swift.String) -> Swift.String
+public func CLADFetchProductAdData(adspaceId: Swift.String, request: CommerceLinkerAdSDK.CLADProductAdRequest = CLADProductAdRequest()) async -> CommerceLinkerAdSDK.CLADProductAdResponse
+@_Concurrency.MainActor @preconcurrency public struct CLADProductInlineAdView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(adspace: CommerceLinkerAdSDK.CLADAdspace, request: CommerceLinkerAdSDK.CLADProductAdRequest = CLADProductAdRequest())
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s19CommerceLinkerAdSDK017CLADProductInlineC4ViewV4bodyQrvp", 0) __
+}
+@_Concurrency.MainActor @preconcurrency public struct CLADProductOverlayAdView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(adspace: CommerceLinkerAdSDK.CLADAdspace, request: CommerceLinkerAdSDK.CLADProductAdRequest = CLADProductAdRequest())
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s19CommerceLinkerAdSDK018CLADProductOverlayC4ViewV4bodyQrvp", 0) __
+}
+public func CLADFetchRewardAdData(adspaceId: Swift.String, request: CommerceLinkerAdSDK.CLADRewardAdRequest = CLADRewardAdRequest()) async -> CommerceLinkerAdSDK.CLADRewardAdResponse
+@_Concurrency.MainActor @preconcurrency public struct CLADRewardInlineAdView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(adspace: CommerceLinkerAdSDK.CLADAdspace, request: CommerceLinkerAdSDK.CLADRewardAdRequest = CLADRewardAdRequest())
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s19CommerceLinkerAdSDK016CLADRewardInlineC4ViewV4bodyQrvp", 0) __
+}
+@_Concurrency.MainActor @preconcurrency public struct CLADRewardOverlayAdView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(adspace: CommerceLinkerAdSDK.CLADAdspace, request: CommerceLinkerAdSDK.CLADRewardAdRequest = CLADRewardAdRequest())
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s19CommerceLinkerAdSDK017CLADRewardOverlayC4ViewV4bodyQrvp", 0) __
+}
+extension CommerceLinkerAdSDK.CLADEnvironment : Swift.Equatable {}
+extension CommerceLinkerAdSDK.CLADEnvironment : Swift.Hashable {}
+extension CommerceLinkerAdSDK.CLADBrandInlineAdView : Swift.Sendable {}
+extension CommerceLinkerAdSDK.CLADBrandOverlayAdView : Swift.Sendable {}
+extension CommerceLinkerAdSDK.CLADProductInlineAdView : Swift.Sendable {}
+extension CommerceLinkerAdSDK.CLADProductOverlayAdView : Swift.Sendable {}
+extension CommerceLinkerAdSDK.CLADRewardInlineAdView : Swift.Sendable {}
+extension CommerceLinkerAdSDK.CLADRewardOverlayAdView : Swift.Sendable {}
